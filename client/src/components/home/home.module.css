@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  margin: 10px 100px 100px 100px;
+ 
+}
+
+
+
+
+
+
+.barr3{
+  display: flex;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+}
+.countriesContainer{
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
