@@ -32,10 +32,13 @@ export default function rootReducer(state = initialState, actyon) {
         ),
       };
     case GET_COUNTRY_BYNAME:
-      return {
-        ...state,
-        allCountries: actyon.payload,
-      };
+      
+        return {
+          ...state,
+          allCountries: actyon.payload,
+        };
+      
+      
 
     case ORDER_BY_NAME:
       if (actyon.payload === "asc") {

@@ -1,0 +1,82 @@
+
+
+
+
+.conti{
+  display: flex;
+    flex-direction:row;
+    justify-content: space-evenly;
+    align-items: center;
+   
+    
+} 
+
+.conti button{
+  padding: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  width: 150px;
+  font-size: 12px;
+
+}
+
+button:hover{
+  border: 3px solid crimson;
+    box-shadow: 0 0 10px  crimson;
+}
+
+.button{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+ 
+
+}
+
+.button select{
+   margin-left: 5px;
+   width: 120px;
+   padding: 3px;
+   border-radius: 10px;
+   
+}
+.button select:hover{
+  border: 3px solid crimson;
+    box-shadow: 0 0 10px  crimson;
+}
+
+.button label{
+  color: white;
+  font-size: 20px;
+  
+}
+
+
+.countriesContainer{
+  background: transparent;
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: center;
+ 
+ gap: 20px; 
+ padding: 10px 10px 10px 10px;
+ width: 90%;
+ border: 4px solid lightgray;
+ align-content: flex-start;
+ background-size: 20%;
+ margin-left: 5%;
+ border-radius: 10px;
+ 
+} 
+
+.container{
+  margin: 0 auto;
+  padding: 0;
+ background-image: url("C:\Users\carlo\OneDrive\Escritorio\PI-Countries-main\client\src\assets\WhatsApp Image 2022-11-06 at 13.59.18.jpeg");
+ background-position: center;
+ background-repeat: no-repeat;
+ background-size: cover;
+ min-height: 620px;
+}
+

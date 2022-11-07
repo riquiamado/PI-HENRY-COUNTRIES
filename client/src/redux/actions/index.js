@@ -21,26 +21,44 @@ export function getAllCountries() {
   };
 }
 
-export function getCountriesByName(name) {
-  return async function (dispatch) {
-    const det = await axios.get(`http://localhost:3001/countries?name=${name}`);
 
-    dispatch({ type: GET_COUNTRY_BYNAME, payload: det.data });
-    console.log(det.data);
-  };
-}
+export function  getCountriesByName(name){
+  return  async function(dispatch){
+    try {
+       const res= await  axios.get(`http://localhost:3001/countries?name=${name}`)
+    
+    dispatch({type:GET_COUNTRY_BYNAME,  payload:res.data})
+    } catch (error) {
+     alert("No existe este pais sigue intentando")
+    }
+    
+      
+    } 
+  }
+  
+
 
 export function getActivities() {
   return async function (dispatch) {
-    const info = await axios.get(`http://localhost:3001/activities`);
-    return dispatch({ type: GET_ACTIVITIES, payload: info.data });
+    try {
+      const info = await axios.get(`http://localhost:3001/activities`);
+      return dispatch({ type: GET_ACTIVITIES, payload: info.data });
+    } catch (error) {
+      console.log(error);
+    }
+   
   };
 }
 
 export function getCountriesDetails(id) {
   return async function (dispatch) {
-    const json = await axios.get(`http://localhost:3001/countries/${id}`);
+    try {
+      const json = await axios.get(`http://localhost:3001/countries/${id}`);
     return dispatch({ type: GET_COUNTRIES_DETAILS, payload: json.data });
+    } catch (error) {
+      console.log(error);
+    }
+    
   };
 }
 

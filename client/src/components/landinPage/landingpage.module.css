@@ -1,0 +1,44 @@
+header{
+   width: 100%;
+   height: 100%;
+   position: absolute;
+   background-image: url("C:\Users\carlo\OneDrive\Escritorio\PI-Countries-main\client\src\assets\WhatsApp Image 2022-11-06 at 13.59.18.jpeg");
+   background-size: 100%;
+   background-repeat: no-repeat
+   
+} 
+
+   .btn {
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 15px;
+    color: #12DBDB;
+    font-family: Times New Roman;
+    font-size: 39px;
+    font-weight: 100;
+    padding: 10px 30px;
+    background-color: #3D94F6;
+    -webkit-box-shadow: 1px 1px 20px 0 #FFFFFF;
+    -moz-box-shadow: 1px 1px 20px 0 #FFFFFF;
+    box-shadow: 1px 1px 20px 0 #FFFFFF;
+    text-shadow: 1px 1px 50px #DD380D;
+    border: outset #FFFFFF 1px;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+ }
+ 
+ .btn:hover {
+    border: solid #FFFFFF 5px;
+    background: #22A3D5;
+    background-image: -webkit-linear-gradient(top, #22A3D5, #3D94F6);
+    background-image: -moz-linear-gradient(top, #22A3D5, #3D94F6);
+    background-image: -ms-linear-gradient(top, #22A3D5, #3D94F6);
+    background-image: -o-linear-gradient(top, #22A3D5, #3D94F6);
+    background-image: -webkit-gradient(to bottom, #22A3D5, #3D94F6);
+    -webkit-border-radius: 41px;
+    -moz-border-radius: 41px;
+    border-radius: 41px;
+    text-decoration: none;
+ } 

@@ -1,0 +1,67 @@
+.body{
+    background-image: url("C:\Users\carlo\OneDrive\Escritorio\PI-Countries-main\client\src\assets\cyclist-man-racing-bike-on-mountain.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    object-fit: fill;
+    min-height: 625px;
+}
+.formAll form {
+    display: flex;
+    flex-direction:column;
+    justify-content: space-around;
+    align-items: center;
+    
+    
+     
+}
+
+.formu{
+    border:thin solid #000;
+    margin:5px;
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    border-radius: 1rem;
+    background-color: rgb(14, 15, 14);
+    opacity: .7;
+    color:cornflowerblue;
+}
+
+.body button{
+    border-radius: 5px;
+    border-color: cornflowerblue;
+    background-color: cornflowerblue;
+    background-size: 2rem;
+}
+
+.body .actividad{
+    border-radius: 5px;
+    border-color: cornflowerblue;
+    background-color: cornflowerblue;
+    background-size: 2rem;
+}
+
+.actividad{
+    width: 150px;
+    height: 30px;
+}
+
+
+.paisAgregado{
+    width: 80%;
+    display: flex;
+    margin:0 5px;
+    justify-content: center;
+    color: white;
+    gap: 10px;
+    /* border: thin solid; */
+}
+
+.paisAgregado p{
+    border-radius: 5px;
+    border-color: cornflowerblue;
+    background-color: cornflowerblue;
+    background-size: 2rem;
+}
+
+
+

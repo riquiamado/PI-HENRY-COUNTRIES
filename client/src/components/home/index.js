@@ -12,7 +12,7 @@ import {
 import Pagination from "../paginado";
 import React from "react";
 import CountryCard from "../countryCard";
-import styles from "./home.module.css";
+import  "./home.css";
 import SearchBar from "../searchBar";
 
 function Home() {
@@ -27,16 +27,15 @@ function Home() {
   const idFirstCard = currentPages === 1 ? 0 : idLastCard - pages + 1;
   const totalCard = allCountries.length;
   const currentCountries = allCountries.slice(idFirstCard, idLastCard + 1);
-
+  //eslint-disable-next-line no-unused-vars
   const [orden, setOrden] = useState("");
 
   useEffect(() => {
     if (allCountries.length === countries.length) {
-      
       dispatch(getAllCountries());
       dispatch(getActivities());
     }
-  }, [dispatch]);
+  }, [allCountries.length,countries.length,dispatch]);
 
   function handleClick(e) {
     e.preventDefault();
@@ -67,21 +66,36 @@ function Home() {
   }
 
   return (
-    <div className={"styles.container"}>
+    <div className={"container"}>
       <SearchBar />
-      <div className="crear">
-        <Link to="/activities">Crear Actividades</Link>
+      
+      <div className={"conti"}>
+        
+          <button onClick={(el) => handleClick(el)}>Recargar Paises: </button>
+        
+        
+          <Link to={"/"}>
+            <button>Inicio</button>
+          </Link>
+        
+        
+          <Link to="/activities">
+          <button>Crear Actividades</button></Link>
+        
       </div>
-      <div className={"styles.target"}>
-        <div className={"styles.button"}>
-          <div className={"styles.alf"}>
-            <label htmlFor="">Orden Alfabético </label>
+
+     
+        <div className={"button"}>
+
+          <div >
+            <label htmlFor="">Orden Alfabético: </label>
             <select onChange={(e) => handleSortName(e)}>
               <option value={"All"}>All</option>
               <option value="asc">Ascendente</option>
               <option value="desc">Descendente</option>
             </select>
           </div>
+
           <div>
             <label htmlFor="">Ordenar por Poblacion: </label>
             <select onChange={(el) => handleSortPopulation(el)}>
@@ -90,8 +104,10 @@ function Home() {
               <option value="menor">Menor</option>
             </select>
           </div>
+
+
           <div>
-            <label htmlFor="">Buscar por Continentes</label>
+            <label htmlFor="">Buscar por Continentes: </label>
             <select onChange={(e) => handleFilterByContinents(e)}>
               <option value={"All"}>All </option>
               <option value={"South America"}>Sudamérica</option>
@@ -103,8 +119,10 @@ function Home() {
               <option value={"Antarctica"}>Antárctica</option>
             </select>
           </div>
+
+
           <div>
-            <label htmlFor="">Buscar por Actividad</label>
+            <label>Buscar por Actividad: </label>
             {activities.length === 0 ? (
               <p>No se han creado actividades</p>
             ) : (
@@ -118,16 +136,13 @@ function Home() {
               </select>
             )}
           </div>
-          <div>
-            <button onClick={(el) => handleClick(el)}>Recargar Paises</button>
-          </div>
+
+
+          
         </div>
-      </div>
-      <div>
+      
+      
         <div>
-          <Link to={"/"}>
-            <button>Inicio</button>
-          </Link>
           <Pagination
             totalCard={totalCard}
             currentPages={currentPages}
@@ -135,21 +150,23 @@ function Home() {
           />
         </div>
 
-        <div className={styles.countriesContainer}>
+        <div className={"countriesContainer"}>
           {currentCountries?.map((e) => {
             return (
-              <div key={e.id}>
+              <div className="card" key={e.id}>
                 <CountryCard
                   id={e.id}
                   flag={e.flag}
                   name={e.name}
                   continents={e.continents}
+                  population={e.population}
                 />
               </div>
             );
           })}
         </div>
-      </div>
+      
+
     </div>
   );
 }

@@ -4,11 +4,15 @@ import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addActivities } from "../../redux/actions";
 
+import "./createActivity.css"
+
 function Validate(input) {
   let errors = {};
-  if (input.name.length < 5 || input.name.length > 10) {
-    errors.name = "Te falta el nombre";
-  }
+  if (/[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>\d/?~]/.test(input.name)){ errors.name = 'Nombre no puede tener caracteres especiales o tildes'
+}
+   else  if (input.name.length < 3 || input.name.length > 10) {
+    errors.name = "Deverias ingresar un nombre";
+   }
 
   if (!input.dificulty) {
     errors.dificulty = "Debes elegir un grado de dificultad";
@@ -50,7 +54,7 @@ const CreateActivity = () => {
   const [errors, setErrors] = useState({});
 
   function handleChange(el) {
-    el.preventDefault();
+    
     setInput({
       ...input,
       [el.target.name]: el.target.value,
@@ -100,7 +104,7 @@ const CreateActivity = () => {
 
   function handleDelete(el) {
     setInput({
-      ...input, // se trae el estado anterior
+      ...input, 
       countries: input.countries.filter((occ) => occ !== el),
     });
   }
@@ -109,14 +113,15 @@ const CreateActivity = () => {
   }, [input]);
 
   return (
-    <div>
+    <div className="body">
       <Link to="/home">
-        <button>Regresar: </button>
+        <button>REGRESAR</button>
       </Link>
-      <div>
-        <form onSubmit={(el) => handleSubmit(el)}>
-          <div>
-            <label htmlFor="">Nombre</label>
+      <div className="formAll">
+        <form  onSubmit={(el) => handleSubmit(el)}>
+          <div className="formu">
+            <label htmlFor="">Nombre:<br></br>
+            </label>
             <input
               type="text"
               value={input.name}
@@ -126,8 +131,9 @@ const CreateActivity = () => {
             <br />
             {errors.name ? <label>{errors.name}</label> : null}
           </div>
-          <div>
-            <label htmlFor="">Dificultad</label>
+
+          <div className="formu">
+            <label htmlFor="">Dificultad: </label>
             <input
               type="number"
               value={input.dificulty}
@@ -139,8 +145,9 @@ const CreateActivity = () => {
             <br />
             {errors.dificulty ? <label>{errors.dificulty}</label> : null}
           </div>
-          <div>
-            <label htmlFor="">Duración</label>
+
+          <div className="formu">
+            <label htmlFor="">Duración: </label>
             <input
               type="number"
               value={input.duration}
@@ -152,47 +159,51 @@ const CreateActivity = () => {
             <br />
             {errors.duration ? <label>{errors.duration}</label> : null}
           </div>
-          <div>
-            <label htmlFor="">Temporada</label>
+
+          <div className="formu">
+            <label htmlFor="">Temporada:<br></br> 
+            </label>
             <label>
+              Invierno
               <input
-                type="checkbox"
+                type="radio"
                 value="Invierno"
                 name="season"
                 onChange={(el) => handleChange(el)}
               />
-              Invierno
             </label>
             <label>
+              Verano
               <input
-                type="checkbox"
+                type="radio"
                 value="Verano"
                 name="season"
                 onChange={(el) => handleChange(el)}
               />
-              Verano
             </label>
             <label>
+              Primavera
               <input
-                type="checkbox"
+                type="radio"
                 value="Primavera"
                 name="season"
                 onChange={(el) => handleChange(el)}
               />
-              Primavera
             </label>
             <label>
+              Otoño
               <input
-                type="checkbox"
+                type="radio"
                 value="Otoño"
                 name="season"
                 onChange={(el) => handleChange(el)}
               />
-              Otoño
+              <br></br>
             </label>
             <br />
             {errors.season ? <label>{errors.season}</label> : null}
           </div>
+
           <select onChange={(el) => handleSelect(el)}>
             {country?.map((co) => (
               <option value={co.id} key={co.id}>
@@ -200,14 +211,14 @@ const CreateActivity = () => {
               </option>
             ))}
           </select>
-          <input type="submit" value={"Crear Actividad"}></input>
+          <input className="actividad" type="submit" value={"Crear Actividad"}></input>
 
-          <div>
+          <div className="paisAgregado">
             {input.countries.map((el) => (
-              <div key={el}>
+              <div className="agregados" key={el}>
                 <p>{el}</p>
                 {/* <img src={el.img} alt="" /> */}
-                <button onClick={() => handleDelete(el)}>X</button>
+                <button onClick={() => handleDelete(el)}>Delete</button>
               </div>
             ))}
           </div>

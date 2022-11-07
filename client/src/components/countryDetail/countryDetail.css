@@ -1,0 +1,39 @@
+/* .todo{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+} */
+
+.todo{
+    background-image: url("C:\Users\carlo\OneDrive\Escritorio\PI-Countries-main\client\src\assets\WhatsApp Image 2022-11-06 at 14.10.48.jpeg");
+    background-repeat: no-repeat;
+    background-size: 100% 110%;
+    object-fit: fill;
+}
+
+.todo button {
+    border-radius: 5px;
+    border-color: cornflowerblue;
+    background-color: lightgray;
+    background-size: 2rem;
+}
+
+.containerCard{
+
+    display: flex;
+    align-items: stretch;
+    justify-content: space-evenly;
+    flex-direction: row;
+  
+}
+
+.actividades,
+.detalles{
+
+    border:thin solid;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: lightgray;
+    
+    
+}

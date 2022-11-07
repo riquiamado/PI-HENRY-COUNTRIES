@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { getCountriesByName } from "../../redux/actions";
+import styles from "./searchBar.module.css";
 
 export default function SearchBar() {
   const dispatch = useDispatch();
@@ -9,12 +10,23 @@ export default function SearchBar() {
 
   function handleInputCountries(el) {
     el.preventDefault();
-    setName(el.target.value);
+     if(/[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>\d/?~]/.test(el.target.value)){
+      return alert("solo deves ingresar letras")
+     }else{
+      setName(el.target.value);
+     }
+      
+     
+    
   }
 
   function handleSubmit(el) {
     el.preventDefault();
     if (!name) return alert("Debes ingresar un pais");
+    else if(/[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>\d/?~]/.test(name)){
+     return   alert("Los datos ingresados deven ser solo letras")
+    }
+
     else {
       dispatch(getCountriesByName(name));
       setName("");
@@ -23,14 +35,18 @@ export default function SearchBar() {
 
   return (
     <div>
-      <div>
+      <div className={styles.search}>
         <input
           type="text"
-          placeholder="Ingrese un Nombre"
+          placeholder="Ingrese un Pais"
           value={name}
           onChange={(el) => handleInputCountries(el)}
+          className={styles.input}
         />
-        <button type="submit" onClick={(el) => handleSubmit(el)}>
+        <button
+          className={styles.btn}
+          type="submit"
+          onClick={(el) => handleSubmit(el)}>
           Buscar Pais
         </button>
       </div>
