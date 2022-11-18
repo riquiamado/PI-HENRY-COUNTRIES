@@ -29,20 +29,19 @@ const countriesDb = async () => {
     const countries = await Country.findAll();
     if (!countries.length) {
       const arr = await getApiInfo();
-      await Country.bulkCreate(arr);
+      await Country.bulkCreate(arr);//método para permitir la creación de varios registros a la vez, con una sola consulta.
+      return countries;
     }
   } catch (error) {
     console.log("ERROR", error);
   }
 };
-const loadCountry = async () => {
-  await countriesDb();
-};
-loadCountry();
+
+
+
 
 module.exports = {
   getApiInfo,
-  loadCountry,
   countriesDb,
 };
 

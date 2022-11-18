@@ -1,3 +1,4 @@
+
 import {
   GET_ACTIVITIES,
   GET_ALL_COUNTRIES,
@@ -10,13 +11,14 @@ import {
   GET_COUNTRIES_DETAILS,
   CLEAN,
   SET_PAGE,
+  DELETE_ACTIVITY,
 } from "../actions/componentes";
 
 const initialState = {
   countries: [],
   allCountries: [],
   activities: [],
-  allActivities: [],
+   allActivities: [],
   details: {},
   currentPage: 1,
 };
@@ -126,7 +128,7 @@ export default function rootReducer(state = initialState, actyon) {
       return {
         ...state,
         activities: actyon.payload,
-        allActivities: actyon.payload,
+         allActivities: actyon.payload,
       };
 
     case FILTER_BY_REGION:
@@ -142,7 +144,7 @@ export default function rootReducer(state = initialState, actyon) {
 
     case FILTER_CREATED:
       let filter =
-        actyon.payload === "sin filtro"
+        actyon.payload === "Sin Filtrar "
           ? state.countries
           : state.countries.filter((country) => {
               const activities = country.Activities.map((a) => a.name);
@@ -159,17 +161,27 @@ export default function rootReducer(state = initialState, actyon) {
         ...state,
         details: actyon.payload,
       };
+      case DELETE_ACTIVITY:
+                return{
+                    ...state,
+                    activities: state.activities.filter(el=> el.id !== actyon.payload)
+                }
+
 
     case ADD_ACTIVITIES:
+
       return {
         ...state,
-        activities: [...state.activities, actyon.payload],
+        activities: [...state.activities, actyon.payload]
       };
+        
 
     case CLEAN:
       return {
         ...state,
         details: {},
+        currentPage: 1
+        
       };
     case SET_PAGE:
       return {

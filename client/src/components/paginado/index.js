@@ -1,10 +1,13 @@
 import React from "react";
 import styles from "./Paginado.module.css";
 import { useDispatch } from "react-redux";
-import { setCurrentPage } from "../../redux/actions";
+import {  setCurrentPage } from "../../redux/actions";
+ 
 
 function Pagination({ pages, totalCard }) {
   const dispatch = useDispatch();
+ 
+   
 
   const totalPages = Math.ceil((totalCard - 9) / pages) + 1;
 

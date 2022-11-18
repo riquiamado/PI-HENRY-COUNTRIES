@@ -27,6 +27,8 @@ header{
     display: inline-block;
     cursor: pointer;
     text-align: center;
+    opacity: 0.9;
+    margin-top: 15%;
  }
  
  .btn:hover {

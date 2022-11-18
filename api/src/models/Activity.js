@@ -10,6 +10,7 @@ module.exports = (sequelize) => {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true
     },
     dificulty: {
       type: DataTypes.INTEGER,
@@ -41,6 +42,7 @@ module.exports = (sequelize) => {
       type: DataTypes.ENUM ('Verano', 'Otoño', 'Invierno', 'Primavera'),
       allowNull: true,
     },
+   
     create: {
       type: DataTypes.BOOLEAN,
       allowNull: false,

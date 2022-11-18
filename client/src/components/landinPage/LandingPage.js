@@ -6,7 +6,7 @@ function LandingPage() {
   return (
     
     <header>
-       <h1>Countries</h1> 
+       
       <div className={styles.principal}>
         <Link to="/home">
           <button className={styles.btn}>Ingresar</button>

@@ -1,12 +1,14 @@
 const { Router } = require("express");
-const { myDataBase, getApiInfo } = require("./getAllData.js");
 const { Activity, Country } = require("../db.js");
+const { countriesDb} = require("./getAllData.js");
+
 
 const router = Router();
 
 router.get("/", async (req, res) => {
   try {
     const { name } = req.query;
+    await countriesDb()
     let totalCountries = await Country.findAll({
       include: {
         model: Activity,
@@ -27,28 +29,30 @@ router.get("/", async (req, res) => {
 
     return res.status(200).json(totalCountries);
   } catch (error) {
-    console.log("MUESTRAME EL ERRORRR", error);
+    res.status(404).send("error")
   }
 });
 
 router.get("/:id", async (req, res) => {
   const { id } = req.params;
-  const totalCountries = await Country.findOne({
+  const idCountries = await Country.findOne({
     where: {
       id: id.toUpperCase(),
     },
     include: {
       model: Activity,
       attributes: ["name", "dificulty", "duration", "season"],
-      through: { attributes: [] },
+      through: { attributes: [] },   
     },
   });
   if (id) {
    
-    totalCountries
-      ? res.status(200).json(totalCountries)
+    idCountries
+      ? res.status(200).json(idCountries)
       : res.status(404).send("Ningun pais coincide con este ID");
   }
 });
+
+
 
 module.exports = router;

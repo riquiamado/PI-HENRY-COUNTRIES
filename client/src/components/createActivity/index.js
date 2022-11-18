@@ -8,10 +8,10 @@ import "./createActivity.css"
 
 function Validate(input) {
   let errors = {};
-  if (/[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>\d/?~]/.test(input.name)){ errors.name = 'Nombre no puede tener caracteres especiales o tildes'
+  if (/[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>\d/?~]/.test(input.name)){ errors.name = 'Nombre no puede tener numeros,caracteres especiales o tildes'
 }
-   else  if (input.name.length < 3 || input.name.length > 10) {
-    errors.name = "Deverias ingresar un nombre";
+   else  if (input.name.length < 3 || input.name.length > 20) {
+    errors.name = "Deberias ingresar un nombre";
    }
 
   if (!input.dificulty) {
@@ -36,6 +36,7 @@ function Validate(input) {
   if (input.countries.length === 0) {
     errors.countries = "Te falta seleccionar un Pais";
   }
+  
   return errors;
 }
 
@@ -51,6 +52,7 @@ const CreateActivity = () => {
     season: "",
     countries: [],
   });
+  
   const [errors, setErrors] = useState({});
 
   function handleChange(el) {
@@ -97,6 +99,7 @@ const CreateActivity = () => {
         season: [],
       });
       history.push("/home");
+      
     } else {
       alert("complete los datos por favor");
     }
@@ -108,6 +111,9 @@ const CreateActivity = () => {
       countries: input.countries.filter((occ) => occ !== el),
     });
   }
+ 
+   
+
   useEffect(() => {
     setErrors(Validate(input));
   }, [input]);
@@ -136,12 +142,12 @@ const CreateActivity = () => {
             <label htmlFor="">Dificultad: </label>
             <input
               type="number"
-              value={input.dificulty}
+              value={input.dificulty} 
               name="dificulty"
               min="1"
               max="5"
               onChange={(el) => handleChange(el)}
-            />
+            /> 
             <br />
             {errors.dificulty ? <label>{errors.dificulty}</label> : null}
           </div>
@@ -155,7 +161,7 @@ const CreateActivity = () => {
               min="1"
               max="24"
               onChange={(el) => handleChange(el)}
-            />
+            />Hs
             <br />
             {errors.duration ? <label>{errors.duration}</label> : null}
           </div>
@@ -201,9 +207,10 @@ const CreateActivity = () => {
               <br></br>
             </label>
             <br />
+
             {errors.season ? <label>{errors.season}</label> : null}
           </div>
-
+           
           <select onChange={(el) => handleSelect(el)}>
             {country?.map((co) => (
               <option value={co.id} key={co.id}>
@@ -217,7 +224,6 @@ const CreateActivity = () => {
             {input.countries.map((el) => (
               <div className="agregados" key={el}>
                 <p>{el}</p>
-                {/* <img src={el.img} alt="" /> */}
                 <button onClick={() => handleDelete(el)}>Delete</button>
               </div>
             ))}

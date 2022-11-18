@@ -30,29 +30,34 @@ const CountryDetail = () => {
           <img src={details.flag} alt={details.flag} />
 
           <h1>{details.name}</h1>
-          <h2>Capital: {details.capital}</h2>
-          <h2>Continents: {details.continents}</h2>
-          <h2>Subregion: {details.subregion}</h2>
-          <h2>
-            Area: {details.area?.toLocaleString("es-AR") || ""} km<sup>2</sup>
-          </h2>
-          <h2>
-            Poblation: {details.population?.toLocaleString("es-AR") || ""}
-          </h2>
+          <label>Capital</label>
+          <h3>{details.capital}</h3>
+          <label>Continents</label>
+          <h3>{details.continents}</h3>
+          <label>Subregion</label>
+          <h3>{details.subregion}</h3>
+          <label>Area</label>
+          <h3>
+            {details.area?.toLocaleString("es-AR") || ""} km<sup>2</sup>
+          </h3>
+          <label>Poblation</label>
+          <h3>
+            {details.population?.toLocaleString("es-AR") || ""} Hab.
+          </h3>
         </div>
         <div className="actividades">
           <h1>Actividades</h1>
           {details.Activities &&
             details.Activities.map((el) => {
               return (
-                <div key={el.id}>
-                  <h2>Nombre de actividad: </h2>
+                <div key={el}>
+                  <label>Nombre de actividad: </label>
                   <h3>{el.name}</h3>
-                  <h2>Dificultad de actividad: </h2>
-                  <h3>{el.dificulty}</h3>
-                  <h2>Duracion de actividad: </h2>
-                  <h3>{el.duration}</h3>
-                  <h2>Temporada de actividad: </h2>
+                  <label>Dificultad de actividad: </label>
+                  <h3>{el.dificulty} </h3>
+                  <label>Duracion de actividad: </label>
+                  <h3>{el.duration} Hs</h3>
+                  <label>Temporada de actividad: </label>
                   <h3>{el.season}</h3>
                 </div>
               );

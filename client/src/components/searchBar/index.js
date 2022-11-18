@@ -24,7 +24,7 @@ export default function SearchBar() {
     el.preventDefault();
     if (!name) return alert("Debes ingresar un pais");
     else if(/[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>\d/?~]/.test(name)){
-     return   alert("Los datos ingresados deven ser solo letras")
+     return   alert("Los datos ingresados deben ser solo letras")
     }
 
     else {

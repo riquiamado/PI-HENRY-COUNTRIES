@@ -12,12 +12,15 @@ import {
   GET_COUNTRY_BYNAME,
   CLEAN,
   SET_PAGE,
+  DELETE_ACTIVITY,
 } from "./componentes";
 
 export function getAllCountries() {
-  return async function (dispatch) {
-    const count = await axios.get(`http://localhost:3001/countries`);
-    dispatch({ type: GET_ALL_COUNTRIES, payload: count.data });
+  return  function (dispatch) {
+     axios.get(`http://localhost:3001/countries`)
+     .then(response => response.data)
+     .then(data => dispatch({ type: GET_ALL_COUNTRIES, payload:data }))
+         
   };
 }
 
@@ -90,14 +93,44 @@ export function orderByPopulation(payload) {
   };
 }
 
+export function deleteActivity(id) {
+  return async function (dispatch) { 
+     try{ 
+      const activity = await axios.delete(`http://localhost:3001/activities/${id}`)
+      return dispatch({ 
+        type: DELETE_ACTIVITY, 
+        payload: activity, 
+      });
+     } catch (error){
+      alert(error,"daleee")
+     }
+  };
+};
+// export function deleteActivity(payload){
+//   return function (dispatch){
+   
+//     dispatch({type:DELETE_ACTIVITY, payload:payload})
+//   }
+  
+// }
+
+
 export function addActivities(payload) {
   return async function (dispatch) {
-    let info = await axios.post("http://localhost:3001/activities", payload);
-    return dispatch({
-      type: ADD_ACTIVITIES,
-      payload: info.data,
-    });
+    try {
+      let info = await axios.post("http://localhost:3001/activities", payload);
+      console.log(info.data);
+      return dispatch({
+        type: ADD_ACTIVITIES,
+        payload: info.data,
+        
+      });
+      
+    } catch (error) {
+       alert("esta actividad ya fue creada")
   };
+    }
+   
 }
 export function setCurrentPage(page) {
   return {
