@@ -12,7 +12,8 @@ import {
   GET_COUNTRY_BYNAME,
   CLEAN,
   SET_PAGE,
-  DELETE_ACTIVITY,
+  DELETE_ACTIVITY
+ 
 } from "./componentes";
 
 export function getAllCountries() {
@@ -119,7 +120,7 @@ export function addActivities(payload) {
   return async function (dispatch) {
     try {
       let info = await axios.post("http://localhost:3001/activities", payload);
-      console.log(info.data);
+      
       return dispatch({
         type: ADD_ACTIVITIES,
         payload: info.data,

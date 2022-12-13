@@ -11,7 +11,7 @@ import {
   GET_COUNTRIES_DETAILS,
   CLEAN,
   SET_PAGE,
-  DELETE_ACTIVITY,
+  
 } from "../actions/componentes";
 
 const initialState = {
@@ -161,12 +161,6 @@ export default function rootReducer(state = initialState, actyon) {
         ...state,
         details: actyon.payload,
       };
-      case DELETE_ACTIVITY:
-                return{
-                    ...state,
-                    activities: state.activities.filter(el=> el.id !== actyon.payload)
-                }
-
 
     case ADD_ACTIVITIES:
 

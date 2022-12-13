@@ -14,10 +14,10 @@ function Validate(input) {
     errors.name = "Deberias ingresar un nombre";
    }
 
-  if (!input.dificulty) {
-    errors.dificulty = "Debes elegir un grado de dificultad";
-  } else if (parseInt(input.dificulty) < 1 || parseInt(input.dificulty) > 5) {
-    errors.dificulty = "La dificulty deber estar entre 1 y 5";
+  if (!input.difficulty) {
+    errors.difficulty = "Debes elegir un grado de dificultad";
+  } else if (parseInt(input.difficulty) < 1 || parseInt(input.difficulty) > 5) {
+    errors.difficulty = "La dificulty deber estar entre 1 y 5";
   }
 
   if (!input.duration) {
@@ -47,7 +47,7 @@ const CreateActivity = () => {
 
   const [input, setInput] = useState({
     name: "",
-    dificulty: "",
+    difficulty: "",
     duration: "",
     season: "",
     countries: [],
@@ -94,7 +94,7 @@ const CreateActivity = () => {
       alert("Actividad Creada");
       setInput({
         name: "",
-        dificulty: [],
+        difficulty: [],
         duration: "",
         season: [],
       });
@@ -111,7 +111,7 @@ const CreateActivity = () => {
       countries: input.countries.filter((occ) => occ !== el),
     });
   }
- 
+  
    
 
   useEffect(() => {
@@ -142,14 +142,14 @@ const CreateActivity = () => {
             <label htmlFor="">Dificultad: </label>
             <input
               type="number"
-              value={input.dificulty} 
-              name="dificulty"
+              value={input.difficulty} 
+              name="difficulty"
               min="1"
               max="5"
               onChange={(el) => handleChange(el)}
             /> 
             <br />
-            {errors.dificulty ? <label>{errors.dificulty}</label> : null}
+            {errors.difficulty ? <label>{errors.difficulty}</label> : null}
           </div>
 
           <div className="formu">
@@ -207,7 +207,7 @@ const CreateActivity = () => {
               <br></br>
             </label>
             <br />
-
+              
             {errors.season ? <label>{errors.season}</label> : null}
           </div>
            

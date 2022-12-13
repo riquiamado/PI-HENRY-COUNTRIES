@@ -6,19 +6,17 @@ import { getCountriesDetails, Clean } from "../../redux/actions";
 import "./countryDetail.css";
 import Loading from "../../loading/Loading";
 
-
-
 const CountryDetail = () => {
   const dispatch = useDispatch();
   const details = useSelector((state) => state.details);
+  console.log(details)
   const { id } = useParams();
 
   useEffect(() => {
     dispatch(getCountriesDetails(id));
+
     return dispatch(Clean());
   }, [dispatch, id]);
-
-  console.log(details);
 
   return details && details.id ? (
     <section className="todo">
@@ -41,14 +39,15 @@ const CountryDetail = () => {
             {details.area?.toLocaleString("es-AR") || ""} km<sup>2</sup>
           </h3>
           <label>Poblation</label>
-          <h3>
-            {details.population?.toLocaleString("es-AR") || ""} Hab.
-          </h3>
+          <h3>{details.population?.toLocaleString("es-AR") || ""} Hab.</h3>
         </div>
         <div className="actividades">
           <h1>Actividades</h1>
+
           {details.Activities &&
             details.Activities.map((el) => {
+              
+              console.log(el)
               return (
                 <div key={el}>
                   <label>Nombre de actividad: </label>
@@ -59,6 +58,8 @@ const CountryDetail = () => {
                   <h3>{el.duration} Hs</h3>
                   <label>Temporada de actividad: </label>
                   <h3>{el.season}</h3>
+                  
+                 
                 </div>
               );
             })}
@@ -66,10 +67,8 @@ const CountryDetail = () => {
       </div>
     </section>
   ) : (
-   
-      <Loading/>
-    
-  )
+    <Loading />
+  );
 };
 
 export default CountryDetail;

@@ -1,8 +1,12 @@
 import React from "react";
+
 import { Link } from "react-router-dom";
+
 import  "./countryCard.css";
 
 function CountryCard({ flag, name, continents,population, id }) {
+ 
+  
   return (
     <div className={"card-count"}>
       
@@ -18,6 +22,7 @@ function CountryCard({ flag, name, continents,population, id }) {
         <h3 >{continents}</h3>
         <label htmlFor="">Poblation</label>
         <h3>{population?.toLocaleString("es-AR") || ""} Hab. </h3>
+        
       
     </div>
   );
